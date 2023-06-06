@@ -20,7 +20,7 @@ class RegisterController extends Controller
          $validator = Validator::make($request->all(), [
             'name'      => 'required',
             'email'     => 'required|email|unique:users',
-            'password'  => 'required|min:8|confirmed'
+            'password'  => 'required|min:5|confirmed'
         ]);
 
         //if validation fails
@@ -38,14 +38,14 @@ class RegisterController extends Controller
         //return response JSON user is created
         if($user) {
             return response()->json([
-                'success' => true,
+                'message' => 'User is created',
                 'user'    => $user,  
             ], 201);
         }
 
         //return JSON process insert failed 
         return response()->json([
-            'success' => false,
+            'message' => 'User is failed to create',
         ], 409);
     }
 }

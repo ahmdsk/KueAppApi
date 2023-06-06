@@ -32,16 +32,15 @@ class LoginController extends Controller
         //if auth failed
         if(!$token = auth()->guard('api')->attempt($credentials)) {
             return response()->json([
-                'success' => false,
                 'message' => 'Email atau Password Anda salah'
             ], 401);
         }
-
+        
         //if auth success
         return response()->json([
-            'success' => true,
+            'message' => 'Login Success',
             'user'    => auth()->guard('api')->user(),    
-            'token'   => $token   
+            'token'   => $token
         ], 200);
     }
 }
