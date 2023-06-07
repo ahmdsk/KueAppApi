@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
@@ -21,6 +22,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Auth
 Route::post('/login', LoginController::class);
 Route::post('/register', RegisterController::class);
 Route::post('/logout', LogoutController::class);
+
+// Categories
+Route::get('/categories', [CategoriesController::class, 'index']);
+Route::post('/categories/create', [CategoriesController::class, 'create']);
+Route::post('/categories/update/{id}', [CategoriesController::class, 'update']);
+Route::delete('/categories/delete/{id}', [CategoriesController::class, 'delete']);
