@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CakeController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -32,3 +33,10 @@ Route::get('/categories', [CategoriesController::class, 'index']);
 Route::post('/categories/create', [CategoriesController::class, 'create']);
 Route::post('/categories/update/{id}', [CategoriesController::class, 'update']);
 Route::delete('/categories/delete/{id}', [CategoriesController::class, 'delete']);
+
+// Cake Detail
+Route::get('/cake', [CakeController::class, 'index']);
+Route::get('/cake/show/{id}', [CakeController::class, 'show']);
+Route::post('/cake/create', [CakeController::class, 'create']);
+Route::post('/cake/update/{id}', [CakeController::class, 'update']);
+Route::delete('/cake/delete/{id}', [CakeController::class, 'delete']);

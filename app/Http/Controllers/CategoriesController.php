@@ -56,7 +56,7 @@ class CategoriesController extends Controller
         } else {
             return response()->json([
                 'message' => 'Failed Create Category Cake',
-                'data' => null
+                'data' => []
             ], 400);
         }
     }
@@ -93,7 +93,7 @@ class CategoriesController extends Controller
         } else {
             return response()->json([
                 'message' => 'Failed Update Category Cake',
-                'data' => null
+                'data' => []
             ], 400);
         }
     }
@@ -111,7 +111,7 @@ class CategoriesController extends Controller
         } else {
             return response()->json([
                 'message' => 'Failed Delete Category Cake',
-                'data' => null
+                'data' => []
             ], 400);
         }
     }
