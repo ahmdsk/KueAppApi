@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Voucher extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['voucher_code', 'voucher_name', 'voucher_image'];
 }
