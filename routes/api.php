@@ -4,6 +4,8 @@ use App\Http\Controllers\CakeController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\VoucherController;
@@ -61,3 +63,12 @@ Route::get('/store', [StoreController::class, 'index']);
 Route::post('/store/create', [StoreController::class, 'create']);
 Route::put('/store/update/{id}', [StoreController::class, 'update']);
 Route::delete('/store/delete/{id}', [StoreController::class, 'delete']);
+
+// Payment
+Route::get('/payment', [PaymentController::class, 'index']);
+Route::post('/payment/create', [PaymentController::class, 'create']);
+Route::post('/payment/update/{id}', [PaymentController::class, 'update']);
+Route::delete('/payment/delete/{id}', [PaymentController::class, 'delete']);
+
+// Order
+Route::post('/order', OrderController::class);
