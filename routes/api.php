@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/', function() {
+Route::get('/', function () {
     return response()->json([
         'message' => 'Hello API!'
     ]);
@@ -38,39 +38,41 @@ Route::post('/login', LoginController::class);
 Route::post('/register', RegisterController::class);
 Route::post('/logout', LogoutController::class);
 
-// Categories
-Route::get('/categories', [CategoriesController::class, 'index']);
-Route::post('/categories/create', [CategoriesController::class, 'create']);
-Route::post('/categories/update/{id}', [CategoriesController::class, 'update']);
-Route::delete('/categories/delete/{id}', [CategoriesController::class, 'delete']);
+Route::group(['middleware' => ['api.auth']], function () {
+    // Categories
+    Route::get('/categories', [CategoriesController::class, 'index']);
+    Route::post('/categories/create', [CategoriesController::class, 'create']);
+    Route::post('/categories/update/{id}', [CategoriesController::class, 'update']);
+    Route::delete('/categories/delete/{id}', [CategoriesController::class, 'delete']);
 
-// Cake Detail
-Route::get('/cake', [CakeController::class, 'index']);
-Route::get('/cake/show/{id}', [CakeController::class, 'show']);
-Route::post('/cake/create', [CakeController::class, 'create']);
-Route::post('/cake/update/{id}', [CakeController::class, 'update']);
-Route::delete('/cake/delete/{id}', [CakeController::class, 'delete']);
+    // Cake Detail
+    Route::get('/cake', [CakeController::class, 'index']);
+    Route::get('/cake/show/{id}', [CakeController::class, 'show']);
+    Route::post('/cake/create', [CakeController::class, 'create']);
+    Route::post('/cake/update/{id}', [CakeController::class, 'update']);
+    Route::delete('/cake/delete/{id}', [CakeController::class, 'delete']);
 
-// Voucher
-Route::get('/voucher', [VoucherController::class, 'index']);
-Route::get('/voucher/show/{id}', [VoucherController::class, 'show']);
-Route::post('/voucher/create', [VoucherController::class, 'create']);
-Route::post('/voucher/update/{id}', [VoucherController::class, 'update']);
-Route::delete('/voucher/delete/{id}', [VoucherController::class, 'delete']);
+    // Voucher
+    Route::get('/voucher', [VoucherController::class, 'index']);
+    Route::get('/voucher/show/{id}', [VoucherController::class, 'show']);
+    Route::post('/voucher/create', [VoucherController::class, 'create']);
+    Route::post('/voucher/update/{id}', [VoucherController::class, 'update']);
+    Route::delete('/voucher/delete/{id}', [VoucherController::class, 'delete']);
 
-// Store
-Route::get('/store', [StoreController::class, 'index']);
-Route::post('/store/create', [StoreController::class, 'create']);
-Route::put('/store/update/{id}', [StoreController::class, 'update']);
-Route::delete('/store/delete/{id}', [StoreController::class, 'delete']);
+    // Store
+    Route::get('/store', [StoreController::class, 'index']);
+    Route::post('/store/create', [StoreController::class, 'create']);
+    Route::put('/store/update/{id}', [StoreController::class, 'update']);
+    Route::delete('/store/delete/{id}', [StoreController::class, 'delete']);
 
-// Payment
-Route::get('/payment', [PaymentController::class, 'index']);
-Route::post('/payment/create', [PaymentController::class, 'create']);
-Route::post('/payment/update/{id}', [PaymentController::class, 'update']);
-Route::delete('/payment/delete/{id}', [PaymentController::class, 'delete']);
+    // Payment
+    Route::get('/payment', [PaymentController::class, 'index']);
+    Route::post('/payment/create', [PaymentController::class, 'create']);
+    Route::post('/payment/update/{id}', [PaymentController::class, 'update']);
+    Route::delete('/payment/delete/{id}', [PaymentController::class, 'delete']);
 
-// Order
-Route::get('/order', [OrderController::class, 'index']);
-Route::post('/order/create', [OrderController::class, 'create']);
-Route::put('/order/update/status/{id}', [OrderController::class, 'update_status']);
+    // Order
+    Route::get('/order', [OrderController::class, 'index']);
+    Route::post('/order/create', [OrderController::class, 'create']);
+    Route::put('/order/update/status/{id}', [OrderController::class, 'update_status']);
+});
