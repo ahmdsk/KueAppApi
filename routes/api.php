@@ -71,4 +71,6 @@ Route::post('/payment/update/{id}', [PaymentController::class, 'update']);
 Route::delete('/payment/delete/{id}', [PaymentController::class, 'delete']);
 
 // Order
-Route::post('/order', OrderController::class);
+Route::get('/order', [OrderController::class, 'index']);
+Route::post('/order/create', [OrderController::class, 'create']);
+Route::put('/order/update/status/{id}', [OrderController::class, 'update_status']);
