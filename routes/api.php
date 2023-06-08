@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CakeController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -75,4 +76,9 @@ Route::group(['middleware' => ['api.auth']], function () {
     Route::get('/order', [OrderController::class, 'index']);
     Route::post('/order/create', [OrderController::class, 'create']);
     Route::put('/order/update/status/{id}', [OrderController::class, 'update_status']);
+
+    // Cart
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::post('/cart/create', [CartController::class, 'create']);
+    Route::put('/cart/update/quantity', [CartController::class, 'update_quantity']);
 });
