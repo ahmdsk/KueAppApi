@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\VoucherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/', function() {
+    return response()->json([
+        'message' => 'Hello API!'
+    ]);
 });
 
 // Auth
@@ -48,3 +55,9 @@ Route::get('/voucher/show/{id}', [VoucherController::class, 'show']);
 Route::post('/voucher/create', [VoucherController::class, 'create']);
 Route::post('/voucher/update/{id}', [VoucherController::class, 'update']);
 Route::delete('/voucher/delete/{id}', [VoucherController::class, 'delete']);
+
+// Store
+Route::get('/store', [StoreController::class, 'index']);
+Route::post('/store/create', [StoreController::class, 'create']);
+Route::put('/store/update/{id}', [StoreController::class, 'update']);
+Route::delete('/store/delete/{id}', [StoreController::class, 'delete']);
